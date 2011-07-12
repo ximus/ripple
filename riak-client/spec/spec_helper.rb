@@ -28,7 +28,7 @@ Dir[File.join(File.dirname(__FILE__), "support", "*.rb")].sort.each {|f| require
 RSpec.configure do |config|
   config.debug = true
   config.mock_with :rspec
-  
+
   config.before(:each) do
     Riak::RObject.on_conflict_hooks.clear
     FakeWeb.clean_registry

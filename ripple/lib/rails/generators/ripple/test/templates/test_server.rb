@@ -1,6 +1,6 @@
 require 'riak/test_server'
 
-module Ripple  
+module Ripple
   module TestServer
     extend self
 

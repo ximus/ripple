@@ -1,5 +1,5 @@
 
 class Engine
   include Ripple::EmbeddedDocument
-  property :displacement, String  
+  property :displacement, String
 end

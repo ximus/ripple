@@ -155,7 +155,7 @@ shared_examples_for "Unified backend API" do
       @backend.list_keys("test").should == ["keys"]
     end
 
-    context "streaming through a block" do      
+    context "streaming through a block" do
       it "should handle a large number of keys" do
         obj = Riak::RObject.new(@client.bucket("test"))
         obj.content_type = "application/json"
@@ -168,7 +168,7 @@ shared_examples_for "Unified backend API" do
           keys.should be_all {|k| k == 'keys' || (0..749).include?(k.to_i) }
         end
       end
-      
+
       it "should pass an array of keys to the block" do
         @backend.list_keys("test") do |keys|
           keys.should == ["keys"] unless keys.empty?

@@ -5,7 +5,7 @@ describe Ripple::Document::Key do
   before do
     @box = Box.new
   end
-  
+
   it "should define key getter and setter" do
     @box.should respond_to(:key)
     @box.should respond_to(:key=)
@@ -26,5 +26,5 @@ describe Ripple::Document::Key do
     @box.shape.should == "square"
     @box.shape = "oblong"
     @box.key.should == "oblong"
-  end  
+  end
 end

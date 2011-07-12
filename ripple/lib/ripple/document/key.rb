@@ -18,17 +18,17 @@ module Ripple
           end
           def key_attr
             :#{prop}
-          end          
+          end
           CODE
         end
       end
-      
+
       module InstanceMethods
         # Reads the key for this Document.
         def key
           @key
         end
-        
+
         # Sets the key for this Document.
         def key=(value)
           @key = value.to_s
@@ -36,7 +36,7 @@ module Ripple
 
         def key_attr
           :key
-        end        
+        end
       end
     end
   end

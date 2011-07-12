@@ -22,7 +22,7 @@ module Riak
     class HTTPBackend
       include Util::Escape
       include Util::Translation
-      
+
       include TransportMethods
       include ObjectMethods
       include Configuration
@@ -130,7 +130,7 @@ module Riak
       # @return [Array<String>] the list of keys, if no block was given
       def list_keys(bucket, &block)
         bucket = bucket.name if Bucket === bucket
-        if block_given?          
+        if block_given?
           get(200, riak_kv_wm_raw, escape(bucket), {:props => false, :keys => 'stream'}, {}, &KeyStreamer.new(block))
         else
           response = get(200, riak_kv_wm_raw, escape(bucket), {:props => false, :keys => true}, {})

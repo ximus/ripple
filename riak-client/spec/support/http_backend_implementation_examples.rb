@@ -43,7 +43,7 @@ shared_examples_for "HTTP backend" do
     it "should not raise a FailedRequest if one of the expected response codes matches" do
       lambda { @backend.get([200, 301], "/riak/","foo") }.should_not raise_error(Riak::FailedRequest)
     end
-    
+
     it "should yield successive chunks of the response to the given block but not return the entire body" do
       chunks = ""
       response = @backend.get(200, "/riak/","foo") do |chunk|
@@ -74,11 +74,11 @@ shared_examples_for "HTTP backend" do
     it "should raise a FailedRequest exception when the request fails" do
       lambda { @backend.delete(304, "/riak/","foo") }.should raise_error(Riak::FailedRequest)
     end
-    
+
     it "should not raise a FailedRequest if one of the expected response codes matches" do
       lambda { @backend.delete([200, 301], "/riak/","foo") }.should_not raise_error(Riak::FailedRequest)
     end
-    
+
     it "should yield successive chunks of the response to the given block but not return the entire body" do
       chunks = ""
       response = @backend.delete(200, "/riak/","foo") do |chunk|
@@ -110,12 +110,12 @@ shared_examples_for "HTTP backend" do
     it "should raise a FailedRequest exception when the request fails" do
       lambda { @backend.put(204, "/riak/","foo", "This is the body.") }.should raise_error(Riak::FailedRequest)
     end
-    
+
     it "should not raise a FailedRequest if one of the expected response codes matches" do
       lambda { @backend.put([200, 204], "/riak/","foo", "This is the body.") }.should_not raise_error(Riak::FailedRequest)
     end
-    
-    
+
+
     it "should yield successive chunks of the response to the given block but not return the entire body" do
       chunks = ""
       response = @backend.put(200, "/riak/","foo", "This is the body.") do |chunk|
@@ -216,7 +216,7 @@ shared_examples_for "HTTP backend" do
       if @client.http_backend == :NetHTTP
         setup_http_mock(:get, "http://ripple:rocks@127.0.0.1:8098/riak/auth", :body => 'Success!')
       else
-        @_mock_set = "Basic #{Base64::encode64("ripple:rocks").strip}" 
+        @_mock_set = "Basic #{Base64::encode64("ripple:rocks").strip}"
         $mock_server.attach do |env|
           $mock_server.satisfied = env['HTTP_AUTHORIZATION'] == @_mock_set
           [200, {}, Array('Success!')]
@@ -260,7 +260,7 @@ shared_examples_for "HTTP backend" do
 
       end
     end
-    
+
   end
-  
+
 end

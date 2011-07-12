@@ -57,7 +57,7 @@ describe Riak::SessionStore do
     cookie = res["Set-Cookie"][session_match]
     cookie.should_not match(/#{bad_cookie}/)
   end
-  
+
   it "maintains freshness" do
     pool = Riak::SessionStore.new(incrementor, :expire_after => 3)
     res = Rack::MockRequest.new(pool).get('/')

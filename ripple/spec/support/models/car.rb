@@ -1,7 +1,7 @@
 
 class Car
   include Ripple::Document
-  
+
   property :make, String
   property :model, String
 

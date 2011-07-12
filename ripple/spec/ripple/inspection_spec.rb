@@ -8,16 +8,16 @@ describe Ripple::Inspection do
     @box = Box.new
     @address = Address.new
   end
-  
+
   it "should include the class name in the inspect string" do
     @box.inspect.should be_starts_with("<Box")
   end
-  
+
   it "should include the key in the inspect string for documents" do
     @box.key = "square"
     @box.inspect.should be_starts_with("<Box:square")
   end
-  
+
   it "should indicate a new document when no key is specified" do
     @box.inspect.should be_starts_with("<Box:[new]")
   end
@@ -28,7 +28,7 @@ describe Ripple::Inspection do
     @box.inspect.should include("created_at=")
     @box.inspect.should include("updated_at=")
   end
-  
+
   it "should not display a key for embedded documents" do
     @address.inspect.should_not include("[new]")
   end

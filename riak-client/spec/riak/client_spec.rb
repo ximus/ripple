@@ -279,7 +279,7 @@ describe Riak::Client do
     end
 
     after { Riak.disable_list_keys_warnings = true }
-    
+
     it "should list buckets" do
       @backend.should_receive(:list_buckets).and_return(%w{test test2})
       buckets = @client.buckets

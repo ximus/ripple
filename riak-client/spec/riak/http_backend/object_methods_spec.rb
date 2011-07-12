@@ -119,7 +119,7 @@ describe Riak::Client::HTTPBackend::ObjectMethods do
     end
   end
 
-  describe "headers used for storing the object" do    
+  describe "headers used for storing the object" do
     it "should include the content type" do
       @object.content_type = "application/json"
       @backend.store_headers(@object)["Content-Type"].should == "application/json"

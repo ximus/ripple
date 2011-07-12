@@ -332,7 +332,7 @@ describe Riak::RObject do
       @backend.should_receive(:reload_object).with(@object, 2).and_return(@object)
       @object.reload :r => 2
     end
-    
+
     it "should disable matching conditions if the key is present and the :force option is given" do
       @backend.should_receive(:reload_object) do |obj, _|
         obj.etag.should be_nil

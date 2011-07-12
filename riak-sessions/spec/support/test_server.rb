@@ -2,7 +2,7 @@
 require 'riak/test_server'
 
 unless $test_server
-  begin    
+  begin
     require 'yaml'
     config = YAML.load_file("spec/support/test_server.yml")
     $test_server = Riak::TestServer.new(config.symbolize_keys)
