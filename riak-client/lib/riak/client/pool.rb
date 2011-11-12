@@ -54,8 +54,8 @@ module Riak
       # @yieldparam [Object] obj an element of the pool, as created by
       #   the {#open} block
       # @private
-      def take
-        unless block_given?
+      def take(block = nil)
+        unless block_given? || block
           raise ArgumentError, "block required"
         end
 
@@ -72,7 +72,11 @@ module Riak
             e.lock
           end
 
-          r = yield e.object
+          r = if block_given?
+                yield e.object
+              else
+                block[e.object]
+              end
         ensure
           # Unlock
           e.unlock

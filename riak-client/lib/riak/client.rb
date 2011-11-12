@@ -260,8 +260,8 @@ module Riak
     end
 
     # Yields an HTTPBackend.
-    def http(&block)
-      @http_pool.>> &block
+    def http
+      @http_pool >> Proc.new
     end
 
     # Sets the desired HTTP backend
@@ -340,8 +340,8 @@ module Riak
     end
     
     # Yields a protocol buffers backend.
-    def protobuffs(&block)
-      @protobuffs_pool.>> &block
+    def protobuffs
+      @protobuffs_pool >> Proc.new
     end
     
     # Sets the desired Protocol Buffers backend
